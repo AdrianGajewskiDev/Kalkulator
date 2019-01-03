@@ -62,7 +62,6 @@ namespace Kalkulator
         #endregion
 
         /*Do zrobienia:
-         * nadpisac szablon przyciskow aby mozna zrobic animacje 
          * dodac przyciski
          * napisac system ktory bedzie wyswietlal w glownym textboxie liczby
          * napisac system liczenia

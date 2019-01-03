@@ -5,63 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kalkulator"
         mc:Ignorable="d"
-        Title="MainWindow" 
-        Height="450"
-        Width="800"
+        Title="MainWindow"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
         ResizeMode="NoResize"
         >
-    <Border>
+    <Border ClipToBounds="True">
         <Grid>
             <!--Row for close, minimize and maximize buttons-->
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <!--Grid for buttons-->
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="500"/>
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Grid.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <ColorAnimation To="Red" Duration="0:0:0.5" 
-                                                Storyboard.TargetName="CloseButton"
-                                                Storyboard.TargetProperty="Background.Color"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <ColorAnimation To="Gray" Duration="0:0:0.5" 
-                                                Storyboard.TargetName="CloseButton"
-                                                Storyboard.TargetProperty="Background.Color"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Grid.Triggers>
-                    
-                <!--Title-->
-                <Grid Background="Red">
-                    <TextBlock Text="{Binding Title,FallbackValue=Kalkulator}"
+                <!--Icon-->
+                <Image Source="Images/icon.ico"/>
+                
+                <!--Titlebar-->
+                <TextBlock Text="Kalkulator" 
+                           Grid.Column="1"
+                           HorizontalAlignment="Center"
                            VerticalAlignment="Center"
-                           HorizontalAlignment="Right"
-                           Margin="0 0 40 0"
-                           FontSize="30"/>
-                </Grid>
+                           FontSize="50"
+                           Margin="120 0 0 0"
+                           />
 
-                <StackPanel Grid.Column="1"
-                        Orientation="Horizontal">
-                    <Button Content="_" Width="100" Command="{Binding WindowMinimizeCommand}"/>
-                    <Button Content="[ ]" Width="100" Command="{Binding WindowMaximizeCommand}"/>
-                    <Button Content="X" Width="100" x:Name="CloseButton" Command="{Binding WindowCloseCommand}"/>
+                <StackPanel Grid.Column="2"
+                            Orientation="Horizontal"
+                            >
+                    <Button Content="_" Width="100" 
+                            Command="{Binding WindowMinimizeCommand}"
+                            Style="{StaticResource BaseStyle}"/>
+                    <Button Content="[ ]" Width="100" 
+                            Command="{Binding WindowMaximizeCommand}"
+                            Style="{StaticResource BaseStyle}"/>
+                    <Button Content="X" 
+                            Width="100"
+                            x:Name="CloseButton"
+                            Command="{Binding WindowCloseCommand}"
+                            Style="{StaticResource WindowCloseButton}"/>
                 </StackPanel>
 
             </Grid>
