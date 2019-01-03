@@ -4,9 +4,9 @@
 
     <!--Base button style-->
     <Style TargetType="{x:Type Button}" x:Key="BaseStyle">
-        <Setter Property="Background" Value="Black"/>
+        <Setter Property="Background" Value="Orange"/>
         <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -17,7 +17,9 @@
                     <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             Background="{TemplateBinding Background}" 
-                            SnapsToDevicePixels="true">
+                            SnapsToDevicePixels="true"
+                            CornerRadius="30"
+                            Margin="10">
                         <ContentPresenter x:Name="contentPresenter" 
                                           Focusable="False" 
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -33,24 +35,76 @@
 
     <!--Window close button-->
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}" x:Key="WindowCloseButton">
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Orange"/>
 
         <Style.Triggers>
             <EventTrigger RoutedEvent="MouseEnter">
                 <BeginStoryboard>
                     <Storyboard >
-                        <ColorAnimation Duration="0:0:0.3" To="Red"  Storyboard.TargetProperty="Background.Color"/>
+                        <ColorAnimation Duration="0:0:0.1" To="Red"  Storyboard.TargetProperty="Background.Color"/>
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>
             <EventTrigger RoutedEvent="MouseLeave">
                 <BeginStoryboard>
                     <Storyboard >
-                        <ColorAnimation Duration="0:0:0.3" To="White" Storyboard.TargetProperty="Background.Color"/>
+                        <ColorAnimation Duration="0:0:0.1" To="White" Storyboard.TargetProperty="Background.Color"/>
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>
         </Style.Triggers>
     </Style>
 
+    <!--Windows minimize and maximize buttons-->
+    <Style TargetType="{x:Type Button}" x:Key="WindowsButtons" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Background" Value="Orange"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard >
+                        <ColorAnimation Duration="0:0:0.1" To="White"  Storyboard.TargetProperty="Background.Color"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard >
+                        <ColorAnimation Duration="0:0:0.1" To="Orange" Storyboard.TargetProperty="Background.Color"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+    
+    <!--Calculator buttons-->
+    <Style TargetType="{x:Type Button}" x:Key="CalculatorButtons" >
+        <Setter Property="Background" Value="Black"/>
+        <Setter Property="Foreground" Value="Orange"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="FontSize" Value="60"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Padding="4"
+                            Background="Orange">
+                        <Border x:Name="border" BorderBrush="Orange"
+                            Background="{TemplateBinding Background}" 
+                            SnapsToDevicePixels="true"
+                            >
+                            <ContentPresenter x:Name="contentPresenter" 
+                                          Focusable="False" 
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}" 
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </Border>
+               
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

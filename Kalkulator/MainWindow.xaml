@@ -8,23 +8,24 @@
         Title="MainWindow"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        AllowsTransparency="True"
         ResizeMode="NoResize"
+        Width="800"
+        Height="530"
         >
-    <Border ClipToBounds="True">
+    <Border >
         <Grid>
             <!--Row for close, minimize and maximize buttons-->
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!--Grid for buttons-->
-            <Grid>
+            <!--Grid for buttons and title -->
+            <Grid Background="Black">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="350"/>
                 </Grid.ColumnDefinitions>
 
                 <!--Icon-->
@@ -36,18 +37,21 @@
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            FontSize="50"
-                           Margin="120 0 0 0"
+                           Margin="140 0 0 0"
+                           Foreground="Orange"
                            />
 
                 <StackPanel Grid.Column="2"
                             Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="70 0 0 0"
                             >
                     <Button Content="_" Width="100" 
                             Command="{Binding WindowMinimizeCommand}"
-                            Style="{StaticResource BaseStyle}"/>
+                            Style="{StaticResource WindowsButtons}"/>
                     <Button Content="[ ]" Width="100" 
-                            Command="{Binding WindowMaximizeCommand}"
-                            Style="{StaticResource BaseStyle}"/>
+                            Style="{StaticResource WindowsButtons}"
+                            Foreground="Gray"/>
                     <Button Content="X" 
                             Width="100"
                             x:Name="CloseButton"
@@ -56,6 +60,130 @@
                 </StackPanel>
 
             </Grid>
+            
+            <!--Main content grid-->
+            <Grid Grid.Row="1"
+                  Background="Green">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Textbox and buttons-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--main texbox-->
+                    <TextBox Grid.Row="0"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="3"
+                             TextAlignment="Right"
+                             FontSize="30"
+                             IsReadOnly="True"
+                             />
+
+                    <!--Buttons-->
+                    <Button Style="{StaticResource CalculatorButtons}"
+                            Grid.Row="1"
+                            Content="1"
+                            />
+                    <Button Style="{StaticResource CalculatorButtons}"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Content="2"
+                            />
+                    <Button Style="{StaticResource CalculatorButtons}"
+                            Grid.Row="1"
+                            Content="3"
+                            Grid.Column="2"
+                            />
+                    <Button Style="{StaticResource CalculatorButtons}"
+                            Grid.Row="2"
+                            Content="4"
+                            />
+                    <Button Style="{StaticResource CalculatorButtons}"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Content="5"
+                            />
+                    <Button Style="{StaticResource CalculatorButtons}"
+                            Grid.Row="2"
+                            Content="6"
+                            Grid.Column="2"
+                            />
+                    <Button Style="{StaticResource CalculatorButtons}"
+                            Grid.Row="3"
+                            Content="7"
+                            />
+                    <Button Style="{StaticResource CalculatorButtons}"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Content="8"
+                            />
+                    <Button Style="{StaticResource CalculatorButtons}"
+                            Grid.Row="3"
+                            Content="9"
+                            Grid.Column="2"
+                            />
+                    <Button Style="{StaticResource CalculatorButtons}"
+                            Grid.Row="4"
+                            Content="0"
+                            Grid.ColumnSpan="2"
+                            />
+                    <Button Style="{StaticResource CalculatorButtons}"
+                            Grid.Row="4"
+                            Content="="
+                            Grid.Column="2"
+                            />
+
+
+
+                </Grid>
+                
+                <!--Calculate buttons-->
+                <Border Grid.Column="1">
+
+                    <Grid Margin="10 50 10 5">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                        </Grid.RowDefinitions>
+
+                        <Button Style="{StaticResource CalculatorButtons}"
+                                Content="+"/>
+                        <Button Style="{StaticResource CalculatorButtons}"
+                                Grid.Row="1"
+                                Content="-"/>
+                        <Button Style="{StaticResource CalculatorButtons}"
+                                Grid.Row="2"
+                                Content="*"/>
+                        <Button Style="{StaticResource CalculatorButtons}"
+                                Grid.Row="3"
+                                Content="/"/>
+
+                    </Grid>
+                    
+                </Border>
+            </Grid>
+
+            <Border>
+                
+            </Border>
         </Grid>
     </Border>
 
