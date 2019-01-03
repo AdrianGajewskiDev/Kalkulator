@@ -23,6 +23,7 @@ namespace Kalkulator
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new BaseCalculatorViewModel(this);
         }
     }
 }
