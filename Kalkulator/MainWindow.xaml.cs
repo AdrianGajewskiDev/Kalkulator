@@ -20,10 +20,27 @@ namespace Kalkulator
     /// </summary>
     public partial class MainWindow : Window
     {
+        public BaseCalculatorViewModel viewModel;
+
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new BaseCalculatorViewModel(this);
+
+            viewModel = new BaseCalculatorViewModel(this);
+
+            this.DataContext = viewModel;
+        
+        }
+
+        #region Button Click Events
+
+        #endregion
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var obj = (sender as Button);
+
+            BaseCalculatorViewModel.SetValue(MainTextBox, obj.Content);
         }
     }
 }

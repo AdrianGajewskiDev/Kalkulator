@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Kalkulator
@@ -9,7 +11,7 @@ namespace Kalkulator
         {
             mWindow = window;
             Title = "Kalkulator";
-
+            
             WindowCloseCommand = new RelayCommand(Close);
             WindowMinimizeCommand = new RelayCommand(Minimize);
             WindowMaximizeCommand = new RelayCommand(Maximize);
@@ -61,8 +63,23 @@ namespace Kalkulator
 
         #endregion
 
+        #region Calculator Properties
+        /// <summary>
+        /// Text to display in main texbox
+        /// </summary
+        public string TextToDisplayX { get; set; }   
+        #endregion
+
+        #region Calculator Methods
+
+        public static void SetValue(object sender , object value)
+        {
+            var obj = (sender as TextBox);
+            obj.Text += value.ToString();
+        }
+
+        #endregion
         /*Do zrobienia:
-         * napisac system ktory bedzie wyswietlal w glownym textboxie liczby
          * napisac system liczenia
         */
     }
