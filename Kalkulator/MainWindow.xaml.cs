@@ -20,7 +20,15 @@ namespace Kalkulator
     /// </summary>
     public partial class MainWindow : Window
     {
-        public BaseCalculatorViewModel viewModel;
+        #region Properties
+        private BaseCalculatorViewModel viewModel;
+
+        private double Value { get; set; }
+
+        private double SecondValue { get; set; }
+
+        private char Operator { get; set; } 
+        #endregion
 
         public MainWindow()
         {
@@ -34,13 +42,62 @@ namespace Kalkulator
 
         #region Button Click Events
 
-        #endregion
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var obj = (sender as Button);
 
-            BaseCalculatorViewModel.SetValue(MainTextBox, obj.Content);
+            viewModel.SetValue(MainTextBox, obj.Content);
         }
+
+        private void ButtonAddClick(object sender, RoutedEventArgs e)
+        {
+            SetValues(sender);
+        }
+
+        private void ButtonMinusClick(object sender, RoutedEventArgs e)
+        {
+            SetValues(sender);
+        }
+
+        private void ButtonTimesClick(object sender, RoutedEventArgs e)
+        {
+            SetValues(sender);
+        }
+
+        private void ButtonDivideClick(object sender, RoutedEventArgs e)
+        {
+            SetValues(sender);
+        }
+
+        private void ClearButtonClick(object sender, RoutedEventArgs e)
+        {
+            MainTextBox.Text = string.Empty;
+            viewModel.SetDefaults();
+        }
+
+        private void ButtonEqualClick(object sender, RoutedEventArgs e)
+        {
+            var obj = (sender as Button);
+            SecondValue = double.Parse(MainTextBox.Text);
+            viewModel.SecondValue = SecondValue;
+            var result = viewModel.Calculate(Operator);
+            MainTextBox.Text = string.Empty;
+
+            MainTextBox.Text = result.ToString();
+        }
+        #endregion
+
+        #region Methods
+
+        public void SetValues(object ss)
+        {
+            var obj = (ss as Button);
+            Operator = char.Parse(obj.Content.ToString());
+            Value = double.Parse(MainTextBox.Text);
+            viewModel.FirstValue = Value;
+            MainTextBox.Text = string.Empty;
+        }
+        #endregion
+
     }
 }

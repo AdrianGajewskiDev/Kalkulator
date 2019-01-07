@@ -86,12 +86,14 @@
                     </Grid.RowDefinitions>
 
                     <!--main texbox-->
-                    <TextBox x:Name="MainTextBox" 
+                    <TextBox Margin="7 0 0 0 "
+                             x:Name="MainTextBox" 
                              Grid.Row="0"
                              Grid.Column="0"
                              Grid.ColumnSpan="3"
                              TextAlignment="Right"
                              FontSize="30"
+                             IsReadOnly="True"
                              Text="{Binding TextToDisplayX}"           
                              />
 
@@ -157,6 +159,7 @@
                             Grid.Row="4"
                             Content="="
                             Grid.Column="2"
+                            Click="ButtonEqualClick"
                             />
 
 
@@ -164,9 +167,19 @@
                 </Grid>
                 
                 <!--Calculate buttons-->
-                <Border Grid.Column="1">
+                <Grid Grid.Column="1">
 
-                    <Grid Margin="10 50 10 5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Content="CLS"
+                            Height="40"
+                            Width="100"
+                            Click="ClearButtonClick"/>
+
+                    <Grid Grid.Row="1" Margin="10 0 10 5">
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="100"/>
@@ -177,23 +190,23 @@
 
                         <Button Style="{StaticResource CalculatorButtons}"
                                 Content="+"
-                                Click="Button_Click"/>
+                                Click="ButtonAddClick"/>
                         <Button Style="{StaticResource CalculatorButtons}"
                                 Grid.Row="1"
                                 Content="-"
-                                Click="Button_Click"/>
+                                Click="ButtonMinusClick"/>
                         <Button Style="{StaticResource CalculatorButtons}"
                                 Grid.Row="2"
                                 Content="*"
-                                Click="Button_Click"/>
+                                Click="ButtonTimesClick"/>
                         <Button Style="{StaticResource CalculatorButtons}"
                                 Grid.Row="3"
                                 Content="/"
-                                Click="Button_Click"/>
+                                Click="ButtonDivideClick"/>
 
                     </Grid>
                     
-                </Border>
+                </Grid>
             </Grid>
 
             <Border>
