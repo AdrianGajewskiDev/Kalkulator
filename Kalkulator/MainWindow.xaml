@@ -10,6 +10,7 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Width="800"
+        Icon="Images/icon.ico"
         Height="530"
         >
     <Border >
@@ -29,7 +30,8 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Icon-->
-                <Image Source="Images/icon.ico"/>
+                <Image  Margin="10 0 0 0"
+                        Source="Images/icon.ico"/>
                 
                 <!--Titlebar-->
                 <TextBlock Text="Kalkulator" 
@@ -93,7 +95,6 @@
                              Grid.ColumnSpan="3"
                              TextAlignment="Right"
                              FontSize="30"
-                             IsReadOnly="True"
                              Text="{Binding TextToDisplayX}"           
                              />
 
@@ -101,16 +102,19 @@
                     <Button Style="{StaticResource CalculatorButtons}"
                             Grid.Row="1"
                             Content="1"
+                            FontSize="60"
                             Click="Button_Click"
                             />
                     <Button Style="{StaticResource CalculatorButtons}"
                             Grid.Row="1"
                             Grid.Column="1"
+                            FontSize="60"
                             Content="2"
                             Click ="Button_Click"
                             />
                     <Button Style="{StaticResource CalculatorButtons}"
                             Grid.Row="1"
+                            FontSize="60"
                             Content="3"
                             Grid.Column="2"
                             Click="Button_Click"
@@ -118,39 +122,46 @@
                     <Button Style="{StaticResource CalculatorButtons}"
                             Grid.Row="2"
                             Content="4"
+                            FontSize="60"
                             Click="Button_Click"
                             />
                     <Button Style="{StaticResource CalculatorButtons}"
                             Grid.Row="2"
+                            FontSize="60"
                             Grid.Column="1"
                             Content="5"
                             Click="Button_Click"
                             />
                     <Button Style="{StaticResource CalculatorButtons}"
                             Grid.Row="2"
+                            FontSize="60"
                             Content="6"
                             Grid.Column="2"
                             Click="Button_Click"
                             />
                     <Button Style="{StaticResource CalculatorButtons}"
                             Grid.Row="3"
+                            FontSize="60"
                             Content="7"
                             Click="Button_Click"
                             />
                     <Button Style="{StaticResource CalculatorButtons}"
                             Grid.Row="3"
                             Grid.Column="1"
+                            FontSize="60"
                             Content="8"
                             Click="Button_Click"
                             />
                     <Button Style="{StaticResource CalculatorButtons}"
                             Grid.Row="3"
+                            FontSize="60"
                             Content="9"
                             Grid.Column="2"
                             Click="Button_Click"
                             />
                     <Button Style="{StaticResource CalculatorButtons}"
                             Grid.Row="4"
+                            FontSize="60"
                             Content="0"
                             Grid.ColumnSpan="2"
                             Click="Button_Click"
@@ -158,6 +169,7 @@
                     <Button Style="{StaticResource CalculatorButtons}"
                             Grid.Row="4"
                             Content="="
+                            FontSize="60"
                             Grid.Column="2"
                             Click="ButtonEqualClick"
                             />
@@ -165,7 +177,7 @@
 
 
                 </Grid>
-                
+
                 <!--Calculate buttons-->
                 <Grid Grid.Column="1">
 
@@ -175,8 +187,9 @@
                     </Grid.RowDefinitions>
 
                     <Button Content="CLS"
-                            Height="40"
+                            Style="{StaticResource CalculatorButtons}"
                             Width="100"
+                            FontSize="20"
                             Click="ClearButtonClick"/>
 
                     <Grid Grid.Row="1" Margin="10 0 10 5">
@@ -190,28 +203,28 @@
 
                         <Button Style="{StaticResource CalculatorButtons}"
                                 Content="+"
+                                FontSize="60"
                                 Click="ButtonAddClick"/>
                         <Button Style="{StaticResource CalculatorButtons}"
                                 Grid.Row="1"
+                                FontSize="60"
                                 Content="-"
                                 Click="ButtonMinusClick"/>
                         <Button Style="{StaticResource CalculatorButtons}"
                                 Grid.Row="2"
                                 Content="*"
+                                FontSize="60"
                                 Click="ButtonTimesClick"/>
                         <Button Style="{StaticResource CalculatorButtons}"
                                 Grid.Row="3"
                                 Content="/"
+                                FontSize="60"
                                 Click="ButtonDivideClick"/>
 
                     </Grid>
-                    
+
                 </Grid>
             </Grid>
-
-            <Border>
-                
-            </Border>
         </Grid>
     </Border>
 
